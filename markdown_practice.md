@@ -25,7 +25,7 @@ from tensorflow.keras import datasets
 
 (x_train, y_train), (x_test, y_test) = datasets.cifar10.load_data()
 x_train, x_test = x_train / 255.0, x_test / 255.0
-# 完整的代码
+### 4.2完整的代码
 # 导入所需的库
 import tensorflow as tf
 from tensorflow.keras import datasets, layers, models
@@ -41,11 +41,11 @@ def build_lenet():
 
     # 第一个卷积层和池化层
     model.add(layers.Conv2D(6, (5, 5), activation='relu', input_shape=(32, 32, 3)))
-    model.add(layers.AveragePooling2D())
+    model.add(layers.AveragePooling2D(pool_size=(2, 2)))  # 添加池化窗口大小
 
     # 第二个卷积层和池化层
     model.add(layers.Conv2D(16, (5, 5), activation='relu'))
-    model.add(layers.AveragePooling2D())
+    model.add(layers.AveragePooling2D(pool_size=(2, 2)))  # 添加池化窗口大小
 
     # 全连接层和输出层
     model.add(layers.Flatten())
